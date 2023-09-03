@@ -1,0 +1,60 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    margin: 0;
+}
+
+main {
+    margin: 7.5vw;
+}
+
+header {
+    width: 100vw;
+    height: 5vh;
+    background-color: var(--main-color);
+}
+
+header .title {
+    position: absolute;
+    left: 6vw;
+    top: 0.8vh;
+    font-size: var(--big-font-size);
+}
+
+header img {
+    position: absolute;
+    width: 10vw;
+    right: 3vw;
+}
+
+main .add-page {
+    position: absolute;
+    width: 85vw;
+    height: 20vh;
+    top: 8vh;
+    border-radius: var(--big-border-radius);
+    background-color: var(--main-color);
+}
+
+.list .search {
+    position: absolute;
+    width: 83vw;
+    height: 3vh;
+    top: 20vh;
+}
+
+.list .search input {
+    border-radius: var(--normal-border-radius);
+    border: var(--normal-border) solid var(--gray-color);
+    padding-left: 2vw;
+}
+
+.list .search img {
+    position: absolute;
+    width: 6vw;
+    top: 20.3vh;
+    left: 79vw;
+}

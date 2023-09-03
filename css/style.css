@@ -16,6 +16,10 @@
     --big-font-size: 1.5em;
     --small-font-size: 0.5em;
     --light-border: 0.1em;
+    --normal-border: 0.15em;
+    --light-border-radius: 0.1em;
+    --normal-border-radius: 0.3em;
+    --big-border-radius: 0.5em;
     --big-font-weight: 900;
 }
 
@@ -27,4 +31,8 @@
 
 ::-webkit-scrollbar {
     display: none;
+}
+
+input:focus {
+    outline-color: var(--main-color);
 }
