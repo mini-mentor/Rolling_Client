@@ -17,11 +17,14 @@ header {
     background-color: var(--main-color);
 }
 
+.title {
+    font-size: var(--big-font-size);
+}
+
 header .title {
     position: absolute;
     left: 6vw;
     top: 0.8vh;
-    font-size: var(--big-font-size);
 }
 
 header img {
@@ -39,11 +42,21 @@ main .add-page {
     background-color: var(--main-color);
 }
 
+main .add-btn {
+    position: absolute;
+    width: 15vw;
+    height: 5vh;
+    left: 35vw;
+    top: 7vh;
+    background-color: var(--black-color);
+    border-radius: var(--normal-border-radius);
+}
+
 .list .search {
     position: absolute;
     width: 83vw;
     height: 3vh;
-    top: 20vh;
+    top: 17vh;
 }
 
 .list .search input {
@@ -53,8 +66,27 @@ main .add-page {
 }
 
 .list .search img {
+    position: relative;
+    width: 7%;
+    top: 575%;
+    left: 95%;
+}
+
+.pages {
     position: absolute;
-    width: 6vw;
-    top: 20.3vh;
-    left: 79vw;
+    top: 40vh;
+}
+
+.list .pages .paper {
+    width: 79vw;
+    height: 7vh;
+    background-color: var(--main-color);
+    border-radius: var(--big-border-radius);
+    padding: 3vw;
+    margin-bottom: 5vw;
+}
+
+.from,
+.date {
+    font-size: var(--normal-font-size);
 }
