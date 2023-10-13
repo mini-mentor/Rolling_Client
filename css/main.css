@@ -4,17 +4,20 @@
 }
 
 header {
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 40px;
     margin: 0;
+    background-color: var(--main-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 main {
     margin: 7.5vw;
-}
-
-header {
-    width: 100vw;
-    height: 5vh;
-    background-color: var(--main-color);
 }
 
 .title {
@@ -24,66 +27,77 @@ header {
 header .title {
     position: absolute;
     left: 6vw;
-    top: 0.8vh;
 }
 
 header img {
     position: absolute;
-    width: 10vw;
-    right: 3vw;
+    width: 30px;
+    right: 1vw;
+}
+
+main {
+    position: relative;
+    top: 40px;
+    padding: 3vw;
 }
 
 main .add-page {
-    position: absolute;
-    width: 85vw;
+    position: relative;
+    width: 100;
     height: 160px;
-    top: 8vh;
     border-radius: var(--big-border-radius);
     background-color: var(--main-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 main .add-btn {
     position: absolute;
-    width: 15vw;
+    width: 50px;
     height: 45px;
-    left: 35vw;
-    top: 7vh;
     background-color: var(--gray-color);
     border-radius: var(--normal-border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-btn > button {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .search {
-  position: relative;
-  top: 12vh;
-  width: 78.3vw;
+    position: relative;
+    top: 20px;
+    width: 104%;
+    display: flex;
 }
 
 input {
-  position: relative;
-  width: 100%;
-  border: 1px solid #bbb;
-  border-radius: 8px;
-  padding: 10px 12px;
-  font-size: 14px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
 }
 
-.search > button > img {
-  position : absolute;
+.search > img {
+  position : relative;
   width: 17px;
-  top: 13vh;
-  right: -10px;
-  margin: 0;
+  top: 20px;
+  right: 40px;
 }
 
 .pages {
-    position: absolute;
-    top: 40vh;
+    position: relative;
+    width: 100%;
+    top: 50px;
 }
 
 .list .pages .paper {
     position: relative;
-    width: 79vw;
-    height: 7vh;
+    height: 60px;
     background-color: var(--main-color);
     border-radius: var(--big-border-radius);
     padding: 3vw;
