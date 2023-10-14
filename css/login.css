@@ -57,12 +57,14 @@ footer p {
 }
 
 .google-login {
+    position: relative;
     border: 0.1em solid var(--gray-color);
     background-color: var(--white-color);
     margin-bottom: 1em;
 }
 
 .kakao-login {
+    position: relative;
     background-color: var(--kakao-color);
 }
 
@@ -77,16 +79,19 @@ footer .google-login img,
 footer .kakao-login img {
     position: absolute;
     padding-left: 2em;
+    
 }
 
 .google-login img {
-    position: absolute;
-    width: 5vw;
-    height: 5vh;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    top: 0.8vh;
 }
 
 .kakao-login img {
-    position: absolute;
-    width: 5vw;
-    height: 5vh;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    top: 0.5vh;
 }
