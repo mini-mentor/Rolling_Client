@@ -29,6 +29,30 @@
     font-family: var(--main-font);
 }
 
+header {
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 40px;
+    margin: 0;
+    background-color: var(--main-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .title {
+    position: absolute;
+    left: 6vw;
+}
+
+header img {
+    position: absolute;
+    width: 30px;
+    right: 1vw;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }

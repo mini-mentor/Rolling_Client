@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
     <header>
         <div class="title">Rolling</div>
@@ -25,69 +27,45 @@
         <div class="list">
             <div class="search">
                 <input type="text" class="search">
-                
+
                 <img src="img/search-outline.svg" alt="검색버튼">
-                
+
             </div>
-            <div class="pages">
-                <div class="paper" id="paper1">
-                    <div class="title">졸업하는 하은이</div>
-                    <div class="detail">
-                        <div class="from">From. 2-2반</div>
-                        <div class="date">2022.12.23</div>
-                    </div>
-                </div>
-                <div class="paper" id="paper2">
-                    <div class="title">졸업하는 하은이</div>
-                    <div class="detail">
-                        <div class="from">From. 2-2반</div>
-                        <div class="date">2022.12.23</div>
-                    </div>
-                </div>
-                <div class="paper" id="paper3">
-                    <div class="title">졸업하는 하은이</div>
-                    <div class="detail">
-                        <div class="from">From. 2-2반</div>
-                        <div class="date">2022.12.23</div>
-                    </div>
-                </div>
-                <div class="paper" id="paper4">
-                    <div class="title">졸업하는 하은이</div>
-                    <div class="detail">
-                        <div class="from">From. 2-2반</div>
-                        <div class="date">2022.12.23</div>
-                    </div>
-                </div>
-                <div class="paper" id="paper5">
-                    <div class="title">졸업하는 하은이</div>
-                    <div class="detail">
-                        <div class="from">From. 2-2반</div>
-                        <div class="date">2022.12.23</div>
-                    </div>
-                </div>
-                <div class="paper" id="paper5">
-                    <div class="title">졸업하는 하은이</div>
-                    <div class="detail">
-                        <div class="from">From. 2-2반</div>
-                        <div class="date">2022.12.23</div>
-                    </div>
-                </div>
-                <div class="paper" id="paper5">
-                    <div class="title">졸업하는 하은이</div>
-                    <div class="detail">
-                        <div class="from">From. 2-2반</div>
-                        <div class="date">2022.12.23</div>
-                    </div>
-                </div>
-                <div class="paper" id="paper5">
-                    <div class="title">졸업하는 하은이</div>
-                    <div class="detail">
-                        <div class="from">From. 2-2반</div>
-                        <div class="date">2022.12.23</div>
-                    </div>
-                </div>
-            </div>
+            <div class="pages"></div>
         </div>
     </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        // 1. JQUERY CDN 삽입
+        
+        // 2. ajax 함수 이용해서 api 호출, success 응답 호출 해보기
+        $.ajax({
+            type: 'get',           // 타입 (get, post, put 등등)
+            url: 'http://localhost:8080/api/rolling-papers',           // 요청할 서버url
+            async: true,            // 비동기화 여부 (default : true)
+            dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
+            data: {},
+            success: function (result) { // 결과 성공 콜백함수
+                result.forEach((result) => {
+                    setPaperHtml(result.title, result.maker);
+                })
+            }
+        });
+
+        function setPaperHtml(title, maker){
+            $(".pages").append(getPaperHtml(title, maker));// html - 덮어씌우기, append - 추가하기
+        }
+
+        function getPaperHtml(title, maker){
+            return `<div class="paper">
+                    <div class="title">${title}</div>
+                    <div class="detail">
+                        <div class="from">From. ${maker}</div>
+                        <div class="date">2022.12.23</div>
+                    </div>
+                </div>`;
+        }
+    </script>
 </body>
+
 </html>
