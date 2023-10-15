@@ -31,7 +31,7 @@
     top: 20px;
 }
 
-.container > input[type='button'] {
+.container > button {
     position: relative;
     width: 100%;
     height: 35px;

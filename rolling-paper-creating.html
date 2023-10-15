@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,12 +9,14 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/rolling-paper-creating.css">
 </head>
+
 <body>
     <header>
         <div class="title">Rolling</div>
         <img id="menu-outline" src="img/menu-outline.svg" alt="메뉴바">
     </header>
     <div class="wrapper">
+
 
         <div class="container">
             <div class="title">롤링페이퍼를 만들어요</div>
@@ -23,10 +26,46 @@
             </div>
             <div class="input-receiver">
                 <label for="receiver">받을 대상</label><br>
-                <input type="text" id="receiver" placeholder="롤링페이퍼를 받을 대상을 입력하세요">
+                <input type="text" id="receiver" placeholder="롤링페이퍼를 받을 대상의 이름을 입력하세요">
             </div>
-            <input type="button" name="submit" id="submit" value="롤링페이퍼 생성하기">
+            <button onclick="create()">롤링페이퍼 생성하기</button>
         </div>
+
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        let paper_title;
+        let receiver;
+
+
+
+        function create() {
+            console.log('onclick!');
+            var paper_title = $("#paper-title").val();
+            var receiver = $("#receiver").val();
+
+            let param = {
+                "title": paper_title,
+                "receiver": receiver
+            };
+            console.log(param);
+
+             // 2. ajax 함수 이용해서 api 호출, success 응답 호출 해보기
+            $.ajax({
+                type: 'post',           // 타입 (get, post, put 등등)
+                url: 'http://localhost:8080/api/rolling-papers',           // 요청할 서버url
+                async: true,            // 비동기화 여부 (default : true)
+                dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
+                data: JSON.stringify(param),
+                contentType: "application/json",
+                success: function (data) { // 결과 성공 콜백함수
+                    console.log(data);
+                }
+            });
+            }
+       
+    </script>
 </body>
+
 </html>

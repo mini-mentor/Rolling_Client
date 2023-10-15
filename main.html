@@ -18,11 +18,11 @@
     </header>
     <main>
         <div class="add-page">
-            <div class="add-btn">
-                <button>
+            <button class="add-btn">
+                <a href="./rolling-paper-creating.html">
                     <img src="./img/plus.png" alt="페이지 더 만들기">
-                </button>
-            </div>
+                </a>
+            </button>
         </div>
         <div class="list">
             <div class="search">
@@ -34,10 +34,11 @@
             <div class="pages"></div>
         </div>
     </main>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
         // 1. JQUERY CDN 삽입
-        
+
         // 2. ajax 함수 이용해서 api 호출, success 응답 호출 해보기
         $.ajax({
             type: 'get',           // 타입 (get, post, put 등등)
@@ -52,11 +53,11 @@
             }
         });
 
-        function setPaperHtml(title, maker){
+        function setPaperHtml(title, maker) {
             $(".pages").append(getPaperHtml(title, maker));// html - 덮어씌우기, append - 추가하기
         }
 
-        function getPaperHtml(title, maker){
+        function getPaperHtml(title, maker) {
             return `<div class="paper">
                     <div class="title">${title}</div>
                     <div class="detail">
