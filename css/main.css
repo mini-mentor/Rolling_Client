@@ -34,7 +34,7 @@ main .add-btn {
     justify-content: center;
 }
 
-.add-btn > button {
+.add-btn {
     border: none;
     background-color: rgba(0, 0, 0, 0);
 }
