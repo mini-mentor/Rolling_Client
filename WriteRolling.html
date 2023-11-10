@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rolling</title>
     <link rel="stylesheet" href="/css/WriteRolling.css">
-    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>  
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
+
 <body>
     <div id="wrap">
         <header>
             <span class="rolling_title">Rolling</span>
-            <div class="hamberger_menu"><iconify-icon icon="material-symbols:menu" width="25" height="24"></iconify-icon></div>
+            <div class="hamberger_menu"><iconify-icon icon="material-symbols:menu" width="25"
+                    height="24"></iconify-icon></div>
         </header>
         <main>
             <div class="top_box">
-                <div class="rec_box">
-                    <div class="rec_tit">To.</div>
-                    <input type="text" id="recipient_input" disabled>
-                </div>
-                <button id="sharebtn"><iconify-icon icon="ph:share-fat-fill" width="25" height="23"></iconify-icon></button>
+                <div class="rec_box"></div>
+                <button id="sharebtn"><iconify-icon icon="ph:share-fat-fill" width="25"
+                        height="23"></iconify-icon></button>
             </div>
             <div class="middle_box"></div>
             <div class="bottom_box">
@@ -35,22 +36,34 @@
     <script>
         let receiver = "";
 
-        function create() {
 
-             // 2. ajax 함수 이용해서 api 호출, success 응답 호출 해보기
-            $.ajax({
-                type: 'get',           // 타입 (get, post, put 등등)
-                url: 'http://localhost:8080/api/rolling-papers',           // 요청할 서버url
-                async: true,            // 비동기화 여부 (default : true)
-                dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
-                data: ["안녕"],
-                contentType: "application/json",
-                success: function (data) { // 결과 성공 콜백함수
-                    console.log(data);
-                }
-            });
+
+        // 2. ajax 함수 이용해서 api 호출, success 응답 호출 해보기
+        $.support.cors = true;
+        $.ajax({
+            type: 'get',           // 타입 (get, post, put 등등)
+            url: 'http://localhost:8080/api/rolling-papers',           // 요청할 서버url
+            async: true,            // 비동기화 여부 (default : true)
+            dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
+            data: {},
+            contentType: "application/json",
+            success: function (result) { // 결과 성공 콜백함수
+
+                setPaperHtml(result.receiver);
+
+            }
+        });
+
+        function setPaperHtml(receiver) {
+            $(".rec_box").append(getPaperHtml(receiver));// html - 덮어씌우기, append - 추가하기
         }
-       
+
+        function getPaperHtml(receiver) {
+            return `<div class="rec_tit">To.</div>
+                    <div id="recipient_input">${receiver}</div>`;
+        }
     </script>
+
 </body>
+
 </html>
