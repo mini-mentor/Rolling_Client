@@ -17,7 +17,7 @@
             <div class="top_box">
                 <div class="rec_box">
                     <div class="rec_tit">To.</div>
-                    <input type="text" id="recipient_input">
+                    <input type="text" id="recipient_input" disabled>
                 </div>
                 <button id="sharebtn"><iconify-icon icon="ph:share-fat-fill" width="25" height="23"></iconify-icon></button>
             </div>
@@ -30,5 +30,27 @@
         </main>
         <button class="send_btn">전송하기</button>
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        let receiver = "";
+
+        function create() {
+
+             // 2. ajax 함수 이용해서 api 호출, success 응답 호출 해보기
+            $.ajax({
+                type: 'get',           // 타입 (get, post, put 등등)
+                url: 'http://localhost:8080/api/rolling-papers',           // 요청할 서버url
+                async: true,            // 비동기화 여부 (default : true)
+                dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
+                data: ["안녕"],
+                contentType: "application/json",
+                success: function (data) { // 결과 성공 콜백함수
+                    console.log(data);
+                }
+            });
+        }
+       
+    </script>
 </body>
 </html>

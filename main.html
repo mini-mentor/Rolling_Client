@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
@@ -34,12 +33,13 @@
             <div class="pages"></div>
         </div>
     </main>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         // 1. JQUERY CDN 삽입
 
+
         // 2. ajax 함수 이용해서 api 호출, success 응답 호출 해보기
+        $.support.cors = true;
         $.ajax({
             type: 'get',           // 타입 (get, post, put 등등)
             url: 'http://localhost:8080/api/rolling-papers',           // 요청할 서버url
@@ -53,18 +53,26 @@
             }
         });
 
+        // $(function () {
+        //     $.ajax("http://localhost:8080/api/rolling-papers")
+        //         .success(function (result) {
+        //             result.forEach((result) => {
+        //                 setPaperHtml(result.title, result.maker);
+        //             })
+        //         });
+        // });
         function setPaperHtml(title, maker) {
             $(".pages").append(getPaperHtml(title, maker));// html - 덮어씌우기, append - 추가하기
         }
 
         function getPaperHtml(title, maker) {
             return `<div class="paper">
-                    <div class="title">${title}</div>
-                    <div class="detail">
-                        <div class="from">From. ${maker}</div>
-                        <div class="date">2022.12.23</div>
-                    </div>
-                </div>`;
+                        <div class="title">${title}</div>
+                        <div class="detail">
+                            <div class="from">From. ${maker}</div>
+                            <div class="date">2022.12.23</div>
+                        </div>
+                    </div>`;
         }
     </script>
 </body>

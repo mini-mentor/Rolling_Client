@@ -28,7 +28,7 @@
                 <label for="receiver">받을 대상</label><br>
                 <input type="text" id="receiver" placeholder="롤링페이퍼를 받을 대상의 이름을 입력하세요">
             </div>
-            <button onclick="create()">롤링페이퍼 생성하기</button>
+            <button onclick="create(),location.href='./WriteRolling.html'">롤링페이퍼 생성하기</button>
         </div>
 
     </div>
@@ -37,8 +37,6 @@
     <script>
         let paper_title;
         let receiver;
-
-
 
         function create() {
             console.log('onclick!');
@@ -63,7 +61,7 @@
                     console.log(data);
                 }
             });
-            }
+        }
        
     </script>
 </body>
