@@ -48,7 +48,7 @@
             data: {},
             success: function (result) { // 결과 성공 콜백함수
                 result.forEach((result) => {
-                    setPaperHtml(result.title, result.maker);
+                    setPaperHtml(result.rollingpaperTitle, result.rollingpaperMaker);
                 })
             }
         });

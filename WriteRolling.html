@@ -48,9 +48,7 @@
             data: {},
             contentType: "application/json",
             success: function (result) { // 결과 성공 콜백함수
-
-                setPaperHtml(result.receiver);
-
+                setPaperHtml(result[result.length-1].rollingpaperReceiver);// 받는 사람 띄우기
             }
         });
 
