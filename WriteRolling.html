@@ -7,6 +7,8 @@
     <title>Rolling</title>
     <link rel="stylesheet" href="/css/WriteRolling.css">
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="./css/WriteRolling.css">
+
 </head>
 
 <body>
@@ -36,19 +38,27 @@
     <script>
         let receiver = "";
 
+        const url = new URL(window.location.href);
+        console.log(url);
 
+        // URLSearchParams 객체
+        const urlParams = url.searchParams;
+
+        // URLSearchParams.get()
+        let id = urlParams.get('id');
 
         // 2. ajax 함수 이용해서 api 호출, success 응답 호출 해보기
         $.support.cors = true;
         $.ajax({
             type: 'get',           // 타입 (get, post, put 등등)
-            url: 'http://localhost:8080/api/rolling-papers',           // 요청할 서버url
+            url: `http://localhost:8080/api/rolling-papers/${id}`,           // 요청할 서버url
             async: true,            // 비동기화 여부 (default : true)
             dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
             data: {},
             contentType: "application/json",
             success: function (result) { // 결과 성공 콜백함수
-                setPaperHtml(result[result.length-1].rollingpaperReceiver);// 받는 사람 띄우기
+                console.log(result);
+                setPaperHtml(result.rollingpaperReceiver);// 받는 사람 띄우기
             }
         });
 
