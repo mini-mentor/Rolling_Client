@@ -61,9 +61,10 @@ main{
 }
 .rec_box{
     box-sizing: border-box;
-    width: 47.84%;
+    width: 60.84%;
     min-width: 138px;
     height: 100%;
+    margin-top: 10px;
     margin-left: 35px;
     display: flex;
     align-items: flex-end;
@@ -81,7 +82,7 @@ main{
     outline: none;
     font-size: 24px;
     padding-left: 10px;
-    padding-bottom: 4px;
+    padding-bottom: 8px;
 }
 #sharebtn{
     box-sizing: border-box;
