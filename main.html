@@ -12,7 +12,7 @@
 
 <body>
     <header>
-        <div class="title">Rolling</div>
+        <div class="title" onclick="goHome()">Rolling</div>
         <img id="menu-outline" src="img/menu-outline.svg" alt="메뉴바">
     </header>
     <main>
@@ -49,7 +49,7 @@
             success: function (result) { // 결과 성공 콜백함수
                 result.forEach((result) => {
                     console.log(result);
-                    setPaperHtml(result.rollingpaperId, result.rollingpaperTitle, result.rollingpaperMaker);
+                    setPaperHtml(result.rollingpaperId, result.rollingpaperTitle, result.rollingpaperMaker, result.rollingpaperSubmitDate);
                 })
             }
         });
@@ -62,16 +62,16 @@
         //             })
         //         });
         // });
-        function setPaperHtml(id, title, maker) {
-            $(".pages").append(getPaperHtml(id, title, maker));// html - 덮어씌우기, append - 추가하기
+        function setPaperHtml(id, title, maker, date) {
+            $(".pages").append(getPaperHtml(id, title, maker, date));// html - 덮어씌우기, append - 추가하기
         }
 
-        function getPaperHtml(id, title, maker) {
+        function getPaperHtml(id, title, maker, date) {
             return `<div class="paper" onclick="showPaper(${id})">
                         <div class="title">${title}</div>
                         <div class="detail">
                             <div class="from">From. ${maker}</div>
-                            <div class="date">2022.12.23</div>
+                            <div class="date">${new Date().toLocaleDateString()}</div>
                         </div>
                     </div>`;
         }
@@ -80,6 +80,7 @@
             location.href = `./WriteRolling.html?id=${id}`;
         }
     </script>
+    <script src="./js/script.js"></script>
 </body>
 
 </html>
