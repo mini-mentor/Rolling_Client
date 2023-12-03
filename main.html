@@ -52,15 +52,7 @@
                 })
             }
         });
-
-        // $(function () {
-        //     $.ajax("http://localhost:8080/api/rolling-papers")
-        //         .success(function (result) {
-        //             result.forEach((result) => {
-        //                 setPaperHtml(result.title, result.maker);
-        //             })
-        //         });
-        // });
+        
         function setPaperHtml(id, title, maker) {
             $(".pages").append(getPaperHtml(id, title, maker));// html - 덮어씌우기, append - 추가하기
         }
