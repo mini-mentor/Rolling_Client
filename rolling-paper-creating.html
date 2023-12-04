@@ -25,8 +25,12 @@
                 <input type="text" id="paper-title" placeholder="롤링페이퍼의 제목을 입력하세요">
             </div>
             <div class="input-receiver">
-                <label for="receiver">받을 대상</label><br>
+                <label for="receiver">받는 사람</label><br>
                 <input type="text" id="receiver" placeholder="롤링페이퍼를 받을 대상의 이름을 입력하세요">
+            </div>
+            <div class="input-sender">
+                <label for="sender">보낸 사람</label><br>
+                <input type="text" id="sender" placeholder="롤링페이퍼를 보낸 사람의 이름을 입력하세요">
             </div>
             <button onclick="create()">롤링페이퍼 생성하기</button>
         </div>
@@ -37,35 +41,45 @@
     <script>
         let paper_title;
         let receiver;
+        let sender;
         let id;
 
         function create() {
-            console.log('onclick!');
             var paper_title = $("#paper-title").val();
             var receiver = $("#receiver").val();
+            var sender = $("#sender").val();
 
             let param = {
                 "title": paper_title,
+                "sender": sender,
                 "receiver": receiver
             };
-            console.log(param);
 
-             // 2. ajax 함수 이용해서 api 호출, success 응답 호출 해보기
-            $.ajax({
-                type: 'post',           // 타입 (get, post, put 등등)
-                url: `http://localhost:3000/api/rollingpapers`,           // 요청할 서버url
-                async: true,            // 비동기화 여부 (default : true)
-                dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
-                data: JSON.stringify(param),
-                contentType: "application/json",
-                success: function (data) { // 결과 성공 콜백함수
-                    console.log(data.rollingpaperId);
-                    id = data.rollingpaperId;
-                    location.href = `./WriteRolling.html?id=${id}`;
-                }
-            });
+            if (paper_title !== ''
+                && receiver !== ''
+                && sender !== '') {
+
+                // 2. ajax 함수 이용해서 api 호출, success 응답 호출 해보기
+                $.ajax({
+                    type: 'post',           // 타입 (get, post, put 등등)
+                    url: `http://localhost:3000/api/rollingpapers`,           // 요청할 서버url
+                    async: true,            // 비동기화 여부 (default : true)
+                    dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
+                    data: JSON.stringify(param),
+                    contentType: "application/json",
+                    success: function (data) { // 결과 성공 콜백함수
+                        // location.href = `./write-rolling-paper.html`;
+                    }
+                });
+            } else {
+                console.log("입력되지 않은 값이 존재합니다.");
+            }
         }
-       
+
+        function saveRollingPapaerInfo(data) {
+
+        }
+
     </script>
     <script src="./js/script.js"></script>
 </body>
