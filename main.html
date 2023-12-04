@@ -42,14 +42,15 @@
         $.support.cors = true;
         $.ajax({
             type: 'get',           // 타입 (get, post, put 등등)
-            url: 'http://localhost:8080/api/rolling-papers',           // 요청할 서버url
+            url: 'http://localhost:3000/api/rollingpapers',           // 요청할 서버url
             async: true,            // 비동기화 여부 (default : true)
             dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
             data: {},
             success: function (result) { // 결과 성공 콜백함수
-                result.forEach((result) => {
-                    setPaperHtml(result.rollingpaperId, result.rollingpaperTitle, result.rollingpaperMaker);
-                })
+                result.result.forEach((result) => {
+                    console.log(result);
+                    setPaperHtml(result.id, result.title, result.maker);
+                });
             }
         });
         
@@ -68,10 +69,12 @@
         }
 
         function showPaper(id) {
-            location.href = `./WriteRolling.html?id=${id}`;
+            console.log("creating입니다");
+            location.href = `./write-rolling-paper.html?id=${id}`;
         }
     </script>
     <script src="./js/script.js"></script>
+  
 </body>
 
 </html>
