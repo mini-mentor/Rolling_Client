@@ -48,21 +48,22 @@
             data: {},
             success: function (result) { // 결과 성공 콜백함수
                 result.result.forEach((result) => {
+                    var lastDate = parseInt(result.created_at.substr(9,1))+1;// +1을 하지 않으면 12일이 11일이 됨
                     console.log(result);
-                    setPaperHtml(result.id, result.title, result.maker, result.created_at.substr(0,10));
+                    setPaperHtml(result.id, result.title, result.sender, result.created_at.substr(0,9)+lastDate.toString());
                 });
             }
         });
         
-        function setPaperHtml(id, title, maker, date) {
-            $(".pages").append(getPaperHtml(id, title, maker, date));// html - 덮어씌우기, append - 추가하기
+        function setPaperHtml(id, title, sender, date) {
+            $(".pages").append(getPaperHtml(id, title, sender, date));// html - 덮어씌우기, append - 추가하기
         }
 
-        function getPaperHtml(id, title, maker, date) {
+        function getPaperHtml(id, title, sender, date) {
             return `<div class="paper" onclick="showPaper(${id})">
                         <div class="title">${title}</div>
                         <div class="detail">
-                            <div class="from">From. ${maker}</div>
+                            <div class="from">From. ${sender}</div>
                             <div class="date">${date}</div>
                         </div>
                     </div>`;
