@@ -15,6 +15,7 @@ async function createListMemo(){
     console.log(memo);
     paper.appendChild(memo);
 }
- function showListMemo(){
-    window.location.href = "../write-rolling-paper-createing.html";
+
+function showListMemo(){
+    window.location.href = "../write-rolling-paper-creating.html";
 }
