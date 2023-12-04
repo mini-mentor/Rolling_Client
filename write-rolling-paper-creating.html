@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rolling</title>
+    <link rel="stylesheet" href="/css/write-rolling-paper-creating.css">
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>  
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <span class="rolling_title">Rolling</span>
+            <div class="hamberger_menu"><iconify-icon icon="material-symbols:menu" width="25" height="24"></iconify-icon></div>
+        </header>
+        <main>
+            <div class="paper_box">
+                <textarea name="" id="text" maxlength="50"></textarea>
+            </div>
+            <div class="btn_box">
+               <button class="font_change" onclick="changeFont('normal');">기본체</button>
+               <button class="font_change"  onclick="changeFont('Orbit-Regular');">orbit체</button>
+               <button class="font_change"  onclick="changeFont('EASTARJET-Medium');">이스타체</button>
+            </div>
+        </main>
+        <button class="send_btn">등록하기</button>
+    </div>
+</body>
+<script src="/js/write-rolling-paper-creating.js"></script>
+</html>
