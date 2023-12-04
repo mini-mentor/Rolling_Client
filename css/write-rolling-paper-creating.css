@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,600;1,800&family=Hahmlet:wght@200;400;700&family=Inter:wght@400;600;800&family=Noto+Sans+KR:wght@400;500&display=swap');
-
+@font-face {
+    font-family: 'EASTARJET-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/EASTARJET-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Orbit-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/Orbit-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 html,body{
     width: 100%;
     height: 100%;
@@ -37,88 +48,58 @@ header{
     box-sizing: border-box;
     font-size: 24px;
     font-weight: 600;
-    /* margin: 7px 0 5px 16px; */
-
 }
 main{
     position: relative;
     box-sizing: border-box;
-    width: calc(100% - 30px);
+    width: 100%;
     height: 100%;
     margin: 0 auto;
-    margin-top: 17px;
+    margin-top: 43px;
+    padding-left: 25px;
+    padding-right: 25px;
     margin-bottom: 22px;
-    /* margin: 17px 0 22px 0; */
-    background-color: #FEFDD3;
+}
+.paper_box{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    height: 80%;
+    background-color: #FFEED4;
     border-radius: 30px;
 }
-.top_box{
+.paper_box>textarea{
     box-sizing: border-box;
-    width: calc(100% - 30px);
-    display: flex;
-    justify-content: space-between;
-    margin-top: 11px;
-}
-.rec_box{
-    box-sizing: border-box;
-    width: 60.84%;
-    min-width: 138px;
-    height: 100%;
-    margin-top: 10px;
-    margin-left: 35px;
-    display: flex;
-    align-items: flex-end;
-}
-.rec_tit{
-    font-size: 30px;
-    font-weight: 800;
-}
-#recipient_input{
-    width: calc(100%);
-    height: 30px;
+    display: block;
+    width: 90%;
+    height: 90%;
+    background-color: transparent;
     border: none;
-    background-color: transparent; 
-    border-bottom: 1px solid #000;
     outline: none;
-    font-size: 24px;
-    padding-left: 10px;
-    padding-bottom: 8px;
+    font-size: 25px;
+    resize: none;
+    margin-left: 10px;
+    margin-right: 10px;
 }
-#sharebtn{
-    box-sizing: border-box;
-    width: 51px;
-    height: 51px;
-    background-color: #FCC572;
-    border: none;
-    border-radius: 50%;
-}
-.bottom_box{
-    position: absolute;
+.btn_box{
     width:calc(100% - 30px);
     display: flex;
-    align-items: flex-end;
-    margin: 0 auto;
-    flex-direction: column;
-    bottom: 17px;
-}
-.edit_btn{
-    min-width: 70px;
-    height: 66px;
-    border-radius: 50%;
-    background-color: #FCC572;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center
-}
-.emoji_btn{
-    min-width: 70px;
-    height: 66px;
-    border-radius: 50%;
-    background-color: #FCC572;
-    display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    margin: 0 auto;
+    margin-top: 15px;
+    gap: 10px;
+    padding:10px;
+}
+.btn_box>button{
+    width: 93px;
+    height: 27px;
+    background-color: #FCC572;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
 }
 .send_btn{
     box-sizing: border-box;
@@ -127,7 +108,7 @@ main{
     border-radius: 20px;
     border: none;
     background-color: #FCC572;
-    position: relative;
+    position: fixed;
     bottom: 8px;
     font-size: 24px;
     font-weight: 600;
