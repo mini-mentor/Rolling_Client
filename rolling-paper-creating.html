@@ -44,7 +44,7 @@
         let sender;
         let id;
 
-        function create() {
+        async function create() {
             var paper_title = $("#paper-title").val();
             var receiver = $("#receiver").val();
             var sender = $("#sender").val();
@@ -67,17 +67,36 @@
                     dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
                     data: JSON.stringify(param),
                     contentType: "application/json",
-                    success: function (data) { // 결과 성공 콜백함수
-                        // location.href = `./write-rolling-paper.html`;
+                    success: async function (data) { // 결과 성공 콜백함수
+                        let id = await findRollingPaperLastId();
+                        location.href = `./write-rolling-paper.html?id=${id}`;
+                        // console.log("실행");
                     }
                 });
             } else {
                 console.log("입력되지 않은 값이 존재합니다.");
             }
         }
+        
+        // 만든 롤링페이퍼의 id 구하기
+        async function findRollingPaperLastId() {
+            let curId;
+            $.support.cors = true;
+            await $.ajax({
+                type: 'get',           // 타입 (get, post, put 등등)
+                url: 'http://localhost:3000/api/rollingpapers',           // 요청할 서버url
+                async: true,            // 비동기화 여부 (default : true)
+                dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
+                data: {},
+                success: async function (result) { // 결과 성공 콜백함수
+                    result.result.forEach((result) => {
+                        curId = result.id;// 만든 롤링페이퍼의 id 구하기
+                    });
+                    console.log(curId);
+                }
+            });
 
-        function saveRollingPapaerInfo(data) {
-
+            return curId;
         }
 
     </script>
