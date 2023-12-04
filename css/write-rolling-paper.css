@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,600;1,800&family=Hahmlet:wght@200;400;700&family=Inter:wght@400;600;800&family=Noto+Sans+KR:wght@400;500&display=swap');
-
+@font-face {
+    font-family: 'EASTARJET-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/EASTARJET-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Orbit-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/Orbit-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 html,body{
     width: 100%;
     height: 100%;
