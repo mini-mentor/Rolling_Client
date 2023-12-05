@@ -45,7 +45,7 @@
         const urlParams = url.searchParams;
 
         // URLSearchParams.get()
-        let id = urlParams.get('id');
+        let id = urlParams.get('paper_id');
 
         // 2. ajax 함수 이용해서 api 호출, success 응답 호출 해보기
         $.support.cors = true;
@@ -71,7 +71,7 @@
         }
         function showListMemo() {
             console.log(id);
-            window.location.href = `../write-rolling-paper-creating.html?id=${id}`;
+            window.location.href = `../write-rolling-paper-creating.html?paper_id=${id}`;
         }
 
     </script>
