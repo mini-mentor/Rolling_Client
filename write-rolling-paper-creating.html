@@ -1,30 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rolling</title>
     <link rel="stylesheet" href="/css/write-rolling-paper-creating.css">
-    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>  
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
+
 <body>
     <div id="wrap">
         <header>
             <span class="rolling_title">Rolling</span>
-            <div class="hamberger_menu"><iconify-icon icon="material-symbols:menu" width="25" height="24"></iconify-icon></div>
+            <div class="hamberger_menu"><iconify-icon icon="material-symbols:menu" width="25"
+                    height="24"></iconify-icon></div>
         </header>
         <main>
             <div class="paper_box">
-                <textarea name="" id="text" maxlength="500"></textarea>
+                <textarea name="" id="text" maxlength="500" placeholder="500자 이내 작성"></textarea>
             </div>
             <div class="btn_box">
-               <button class="font_change" onclick="changeFont('normal');">기본체</button>
-               <button class="font_change"  onclick="changeFont('Orbit-Regular');">orbit체</button>
-               <button class="font_change"  onclick="changeFont('EASTARJET-Medium');">이스타체</button>
+                <button class="font_change" onclick="changeFont('normal');">기본체</button>
+                <button class="font_change" onclick="changeFont('Orbit-Regular');">orbit체</button>
+                <button class="font_change" onclick="changeFont('EASTARJET-Medium');">이스타체</button>
             </div>
         </main>
-        <button class="send_btn">등록하기</button>
+        <button class="send_btn" onclick="savePaper()">등록하기</button>
     </div>
 </body>
 <script src="/js/write-rolling-paper-creating.js"></script>
+<script>
+    let id;// 현재 편지의 아이디
+    let paper_id;// 현재 롤링페이퍼의 아이디
+    let content;
+    let writer;
+    let font;
+
+    async function savePaper() {
+        var content = $("#text").val();
+
+        let param = {
+            "id": id,
+            "paper_id": paper_id,
+            "content": content,
+            "writer": writer,
+            "font": font
+        };
+
+        if (paper_title !== ''
+            && receiver !== ''
+            && sender !== '') {
+
+            // 2. ajax 함수 이용해서 api 호출, success 응답 호출 해보기
+            $.ajax({
+                type: 'post',           // 타입 (get, post, put 등등)
+                url: `http://localhost:3000/api/rollingpapers`,           // 요청할 서버url
+                async: true,            // 비동기화 여부 (default : true)
+                dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
+                data: JSON.stringify(param),
+                contentType: "application/json",
+                success: async function (data) { // 결과 성공 콜백함수
+                    let [id, paper_id, content, writer, font] = await findRollingPaperInfo();
+                    location.href = `./write-rolling-paper.html?id=${paper_id}`;
+                    // console.log("실행");
+                }
+            });
+        } else {
+            console.log("오류");
+        }
+    }
+
+    // 만든 롤링페이퍼의 정보 구하기
+    async function findRollingPaperInfo() {
+        let data = [];
+        let curId = await findRollingPaperLastId();
+        
+
+        return data;
+    }
+
+    // 만든 롤링페이퍼의 id 구하기
+    async function findRollingPaperLastId() {
+            let curId;
+            $.support.cors = true;
+            await $.ajax({
+                type: 'get',           // 타입 (get, post, put 등등)
+                url: 'http://localhost:3000/api/rollingpapers',           // 요청할 서버url
+                async: true,            // 비동기화 여부 (default : true)
+                dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
+                data: {},
+                success: async function (result) { // 결과 성공 콜백함수
+                    result.result.forEach((result) => {
+                        curId = result.id;// 만든 롤링페이퍼의 id 구하기
+                    });
+                    console.log(curId);
+                }
+            });
+
+            return curId;
+        }
+
+
+</script>
+
 </html>

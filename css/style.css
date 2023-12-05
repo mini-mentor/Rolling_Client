@@ -47,7 +47,7 @@ header .title {
     left: 6vw;
 }
 
-header img {
+header .hamberger_menu {
     position: absolute;
     width: 30px;
     right: 1vw;
