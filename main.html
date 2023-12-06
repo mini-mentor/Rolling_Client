@@ -14,8 +14,8 @@
 <body>
     <header>
         <div class="title" onclick="goHome()">Rolling</div>
-        <div class="hamberger_menu"><iconify-icon icon="material-symbols:menu" width="25"
-            height="24"></iconify-icon></div>
+        <div class="hamberger_menu"><iconify-icon icon="material-symbols:menu" width="25" height="24"></iconify-icon>
+        </div>
     </header>
     <main>
         <div class="add-page">
@@ -27,9 +27,9 @@
         </div>
         <div class="list">
             <div class="search">
-                <input type="text" class="search">
+                <input type="text" class="search" id="search" onkeydown="doKeyDown(event)">
 
-                <img src="img/search-outline.svg" alt="검색버튼">
+                <img src="img/search-outline.svg" alt="검색버튼" onclick="doKeyDown(event=`onclick`)">
 
             </div>
             <div class="pages"></div>
@@ -37,32 +37,35 @@
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        // 1. JQUERY CDN 삽입
+        showRollingPaperList();
 
 
         // 2. ajax 함수 이용해서 api 호출, success 응답 호출 해보기
-        $.support.cors = true;
-        $.ajax({
-            type: 'get',           // 타입 (get, post, put 등등)
-            url: 'http://localhost:3000/api/rollingpapers',           // 요청할 서버url
-            async: true,            // 비동기화 여부 (default : true)
-            dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
-            data: {},
-            success: function (result) { // 결과 성공 콜백함수
-                result.result.forEach((result) => {
-                    var lastDate = parseInt(result.created_at.substr(9,1))+1;// +1을 하지 않으면 12일이 11일이 됨
-                    console.log(result);
-                    setPaperHtml(result.id, result.title, result.sender, result.created_at.substr(0,9)+lastDate.toString());
-                });
-            }
-        });
-        
+        function showRollingPaperList() {
+
+            $.support.cors = true;
+            $.ajax({
+                type: 'get',           // 타입 (get, post, put 등등)
+                url: 'http://localhost:3000/api/rollingpapers',           // 요청할 서버url
+                async: true,            // 비동기화 여부 (default : true)
+                dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
+                data: {},
+                success: function (result) { // 결과 성공 콜백함수
+                    result.result.forEach((result) => {
+                        var lastDate = parseInt(result.created_at.substr(9, 1)) + 1;// +1을 하지 않으면 12일이 11일이 됨
+                        console.log(result);
+                        setPaperHtml(result.id, result.title, result.sender, result.created_at.substr(0, 9) + lastDate.toString());
+                    });
+                }
+            });
+        }
+
         function setPaperHtml(id, title, sender, date) {
             $(".pages").append(getPaperHtml(id, title, sender, date));// html - 덮어씌우기, append - 추가하기
         }
 
         function getPaperHtml(id, title, sender, date) {
-            return `<div class="paper" onclick="showPaper(${id})">
+            return `<div class="paper" id="paper" onclick="showPaper(${id})">
                         <div class="title">${title}</div>
                         <div class="detail">
                             <div class="from">From. ${sender}</div>
@@ -76,8 +79,77 @@
             location.href = `./write-rolling-paper.html?paper_id=${id}`;
         }
     </script>
+    <script>
+        // 검색
+        function doKeyDown(event) {
+            if (event.keyCode === 13 || event === 'onclick') {// enter키이거나 검색 버튼이 클릭됐다면
+                var input = $("#search").val();
+                if (input === '') {// 빈칸 검색이면 전체 롤링페이퍼 띄우기
+                    deleteDivList();
+                    showRollingPaperList();
+                } else {
+                    deleteDivList();
+                    findIncludedWord(input);// 검색한 값에 따른 title 보기
+                }
+            }
+        }
+
+        // 해당 키워드가 포함되어있는지를 확인
+        function findIncludedWord(input) {
+            // window.location.replace('main.html?title='+input);
+            $.support.cors = true;
+            $.ajax({
+                type: 'get',           // 타입 (get, post, put 등등)
+                url: 'http://localhost:3000/api/rollingpapers',           // 요청할 서버url
+                async: true,            // 비동기화 여부 (default : true)
+                dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
+                data: {},
+                success: function (result) { // 결과 성공 콜백함수
+                    result.result.forEach((result) => {
+                        // var div = document.getElementById("paper");
+                        // div.remove();
+                        deleteDivList();
+                        var title = result.title;
+                        // console.log(typeof title);
+                        if (title.includes(input)) {
+                            // console.log(title);
+                            search(result.id);
+                        }
+                    });
+                }
+            });
+        }
+
+        // 제목으로 검색하기
+        function search(id) {
+            $.support.cors = true;
+            $.ajax({
+                type: 'get',           // 타입 (get, post, put 등등)
+                url: 'http://localhost:3000/api/rollingpapers',           // 요청할 서버url
+                async: true,            // 비동기화 여부 (default : true)
+                dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
+                data: {},
+                success: function (result) { // 결과 성공 콜백함수
+                    result.result.forEach((result) => {
+                        if (result.id === id) {
+                            var lastDate = parseInt(result.created_at.substr(9, 1)) + 1;// +1을 하지 않으면 12일이 11일이 됨
+                            console.log(result);
+                            setPaperHtml(result.id, result.title, result.sender, result.created_at.substr(0, 9) + lastDate.toString());
+                        }
+                    });
+                }
+            });
+        }
+
+        // (검색) 롤링페이퍼 div 전체 지우기
+        function deleteDivList() {
+            var div = document.getElementById("paper");
+            if ( div ) // div태그가 있는지 확인
+                div.remove();
+        }
+    </script>
     <script src="./js/script.js"></script>
-  
+
 </body>
 
 </html>

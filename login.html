@@ -18,7 +18,8 @@
 <body>
     <header>
         <div class="title">Rolling</div>
-        <img id="menu-outline" src="img/menu-outline.svg" alt="메뉴바">
+        <div class="hamberger_menu"><iconify-icon icon="material-symbols:menu" width="25" height="24"></iconify-icon>
+        </div>
     </header>
     <div class="container">
 
@@ -48,7 +49,7 @@
                 <img src="./img/google-logo.svg" alt="google-login">
                 <span>google로 로그인하기</span>
             </div>
-            <div class="kakao-login" onclick="moveKakaoLogin()" >
+            <div class="kakao-login" onclick="moveKakaoLogin()">
                 <img src="./img/kakao-logo.svg" alt="kakao-login">
                 <span>카카오톡으로 로그인하기</span>
             </div>
@@ -118,7 +119,7 @@
                     // response.kakao_account.profile.nickname -> 이름
                     // response.kakao_account.profile.thumbnail_image_url -> 프로필 사진 url
                     // response.kakao_account.profile.email -> 이메일
-                    
+
                 },
             });
         }
