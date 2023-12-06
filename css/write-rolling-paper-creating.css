@@ -1,4 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,600;1,800&family=Hahmlet:wght@200;400;700&family=Inter:wght@400;600;800&family=Noto+Sans+KR:wght@400;500&display=swap');
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
 @font-face {
     font-family: 'EASTARJET-Medium';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/EASTARJET-Medium.woff2') format('woff2');
@@ -14,16 +19,10 @@
 html,body{
     width: 100%;
     height: 100%;
-    /* font-family: 'Asap', sans-serif;
-    font-family: 'Hahmlet', serif;
-    font-family: 'Noto Sans KR', sans-serif; */
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
 }
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Inter', sans-serif;
     font-size: 14px;
 }
 #wrap{
@@ -43,6 +42,7 @@ header{
     background-color: #FCC572;
     padding-left: 16px;
     padding-right: 18px;
+    padding-bottom: 3px;
 }
 .rolling_title{
     box-sizing: border-box;
@@ -62,17 +62,23 @@ main{
 }
 .sender_box{
     box-sizing: border-box;
-    width: 47.84%;
+    width: 80%;
     min-width: 138px;
     margin-left: 35px;
     margin-bottom: 15px;
     display: flex;
     align-items: flex-end;
 }
-.sender_tit{
+.sender_box .sender_tit{
     font-size: 30px;
     font-weight: 800;
 }
+.sender_box .bi{
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+
 #sender_input{
     width: 100%;
     height: 30px;
@@ -102,6 +108,7 @@ main{
     border: none;
     outline: none;
     font-size: 20px;
+    font-family: 'Pretendard-Regular';
     resize: none;
     margin-left: 10px;
     margin-right: 10px;
