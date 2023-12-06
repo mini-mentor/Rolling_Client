@@ -44,8 +44,7 @@
     async function savePaper() {
         var paper_id = urlParams.get('paper_id');// URLSearchParams.get()
         var content = $("#text").val();
-        var writer = $("#sender_input").val();// TODO: html에서 값 가져오기
-        console.log(writer);
+        var writer = $("#sender_input").val();
         var font = findFont();
 
         let param = {
@@ -67,9 +66,7 @@
                 data: JSON.stringify(param),
                 contentType: "application/json",
                 success: async function (data) { // 결과 성공 콜백함수
-                    // let [id, paper_id, content, writer, font] = await findRollingPaperInfo();
                     location.href = `./write-rolling-paper.html?paper_id=${paper_id}`;
-                    // console.log("실행");
                 }
             });
         } else {

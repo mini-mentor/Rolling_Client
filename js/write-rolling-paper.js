@@ -13,8 +13,8 @@ let memoboxList = [];
 //     var memo = document.createElement('div');
 //     var fromSender = document.createElement('div');
     
-//     var text = 'test';
-//     var senderName = 'testUser';
+//     var text = text.value;
+//     var senderName = sender.value;
 //     memo.innerText= text;
 //     fromSender.innerText = `From. ${senderName}`;
 //     memo.className = 'memo';
