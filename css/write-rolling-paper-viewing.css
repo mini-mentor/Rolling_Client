@@ -73,10 +73,10 @@ main{
     font-size: 30px;
     font-weight: 800;
 }
-/* .sender_box .bi{
+.sender_box .bi{
     font-size: 20px;
     margin-left: 5px;
-} */
+}
 
 
 #sender_input{
@@ -124,22 +124,11 @@ main{
     padding:10px;
 }
 .btn_box>button{
-    width: 93px;
-    height: 27px;
+    width: 150px;
+    height: 50px;
     background-color: #FCC572;
     border-radius: 10px;
     border: none;
     font-weight: 600;
-}
-.send_btn{
-    box-sizing: border-box;
-    width: calc(100% - 30px);
-    height: 51px;
-    border-radius: 20px;
-    border: none;
-    background-color: #FCC572;
-    position: fixed;
-    bottom: 8px;
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 1.2rem;
 }
