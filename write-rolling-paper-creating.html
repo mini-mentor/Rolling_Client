@@ -44,7 +44,8 @@
     async function savePaper() {
         var paper_id = urlParams.get('paper_id');// URLSearchParams.get()
         var content = $("#text").val();
-        var writer = '하은이';// TODO: html에서 값 가져오기
+        var writer = $("#sender_input").val();// TODO: html에서 값 가져오기
+        console.log(writer);
         var font = findFont();
 
         let param = {
