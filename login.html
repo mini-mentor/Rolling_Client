@@ -29,12 +29,12 @@
             </div>
         </head>
         <main>
-            <input type="email" name="email" placeholder="이메일"><br>
-            <input type="password" name="pass" placeholder="비밀번호">
+            <input type="email" name="email" id="email" placeholder="이메일"><br>
+            <input type="password" name="pass" id="password" placeholder="비밀번호">
             <div class="exception">
                 <a href="./password.html" id="find-pass">비밀번호를 잊으셨나요?</a>
                 <span id="contour">|</span>
-                <a href="./password.html" id="join-button">회원가입하기</a>
+                <a href="./resign-user.html" id="join-button">회원가입하기</a>
             </div>
         </main>
         <footer>
@@ -161,9 +161,34 @@
         function onSignInFailure(t) {
             //console.log(t);
         }
+
+        function login() {
+            var email = $("#email").val();
+            var password = $("#password").val();
+
+            let param = {
+                "email": email,
+                "password": password
+            };
+
+            $.support.cors = true;
+            $.ajax({
+                type: 'post',           // 타입 (get, post, put 등등)
+                url: `http://localhost:3000/api/login`,           // 요청할 서버url
+                async: true,            // 비동기화 여부 (default : true)
+                dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
+                data: JSON.stringify(param),
+                contentType: "application/json",
+                success: async function (data) { // 결과 성공 콜백함수
+                    console.log("호출됨");
+                    goHome();
+                }
+            });
+        }
     </script>
     <!-- 구글 api 사용을 위한 스크립트 -->
     <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+    <script src="./js/script.js"></script>
 </body>
 
 </html>
