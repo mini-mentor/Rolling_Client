@@ -60,6 +60,29 @@ main{
     padding-right: 25px;
     margin-bottom: 22px;
 }
+.sender_box{
+    box-sizing: border-box;
+    width: 47.84%;
+    min-width: 138px;
+    margin-left: 35px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-end;
+}
+.sender_tit{
+    font-size: 30px;
+    font-weight: 800;
+}
+#sender_input{
+    width: 100%;
+    height: 30px;
+    border: none;
+    background-color: transparent; 
+    border-bottom: 1px solid #000;
+    outline: none;
+    padding-left: 5px;
+    font-size: 24px;
+}
 .paper_box{
     display: flex;
     flex-wrap: wrap;

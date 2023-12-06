@@ -69,6 +69,7 @@ main{
     display: flex;
     justify-content: space-between;
     margin-top: 11px;
+    margin-bottom: 10px;
 }
 .rec_box{
     box-sizing: border-box;
@@ -102,6 +103,42 @@ main{
     background-color: #FCC572;
     border: none;
     border-radius: 50%;
+}
+.middle_box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width:100%;
+    max-height: 100%;
+    /*TODO: 안에서 스크롤 할 수 있게 만들기 */ 
+    /* overflow: scroll; */
+}
+.memo{
+    background-color: #FED9A0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: 150px;
+    height: 150px;
+    padding: 10px;
+    overflow-wrap: break-all; 
+    word-break: break-all; /*글자 기준 줄바꿈*/
+    display: flex;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+    font-size: 20px;
+}
+.from_sender{
+    box-sizing: border-box;
+    position: absolute;
+    bottom:0; 
+    width: calc(100% - 10px);
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: end;
+    margin-bottom: 10px;
+    padding-right: 10px;
 }
 .bottom_box{
     position: absolute;
