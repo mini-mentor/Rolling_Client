@@ -8,27 +8,30 @@
     <!-- <link rel="stylesheet" href="/css/WriteRolling.css"> -->
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     <link rel="stylesheet" href="./css/write-rolling-paper.css">
-
+    <link rel="stylesheet" href="./css/style.css">
 </head>
-
 <body>
     <div id="wrap">
         <header>
             <span class="rolling_title" onclick="goHome()">Rolling</span>
-            <div class="hamberger_menu"><iconify-icon icon="material-symbols:menu" width="25"
-                    height="24"></iconify-icon></div>
+            <!-- <div class="hamberger_menu"><iconify-icon icon="material-symbols:menu" width="25"
+                    height="24"></iconify-icon></div> -->
         </header>
+        <button class="delete_btn">롤링페이퍼 지우기</button>
         <main>
             <div class="top_box">
-                <div class="rec_box"></div>
+                <div class="rec_box">
+                    <div class="rec_tit">To.</div>
+                    <input type="text" id="recipient_input">
+                </div>
                 <button id="sharebtn"><iconify-icon icon="ph:share-fat-fill" width="25"
                         height="23"></iconify-icon></button>
             </div>
             <div class="middle_box"></div>
             <div class="bottom_box">
-                <div class="edit_btn"><iconify-icon icon="mdi:pencil-add" width="30" height="28"
+                <div class="btn edit"><iconify-icon icon="mdi:pencil-add" width="30" height="28"
                         onclick="createPaper()"></iconify-icon></div>
-                <div class="emoji_btn"><iconify-icon icon="mdi:emoji" width="30" height="29"></iconify-icon></div>
+                <div class="btn emoji"><iconify-icon icon="mdi:emoji" width="30" height="29"></iconify-icon></div>
             </div>
 
         </main>
