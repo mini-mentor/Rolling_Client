@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rolling</title>
     <link rel="stylesheet" href="./css/resign-user.css">
-
+    <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
     <header>
-        <div class="title" onclick="goHome()">Rolling</div>
+        <div class="title" onclick="goLoginForm()">Rolling</div>
         <div class="hamberger_menu"><iconify-icon icon="material-symbols:menu" width="25" height="24"></iconify-icon>
         </div>
     </header>
@@ -17,22 +19,69 @@
         <div class="main_title">회원가입</div>
         <div class="con">
             <span>유저이름</span>
-            <input type="text">
+            <input type="text" id="name">
         </div>
         <div class="con">
             <span>이메일</span>
-            <input type="text">
+            <input type="text" id="email">
         </div>
         <div class="con">
             <span>비밀번호</span>
-            <input type="text">
+            <input type="password" id="password">
         </div>
         <div class="con">
-            <span>비밀번호</span>
-            <input type="password">
+            <span>비밀번호 확인</span>
+            <input type="password" id="passwordConfirm">
         </div>
-        <button>가입하기</button>
+        <button id="joinBtn" onclick="join()">가입하기</button>
     </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+
+        function join() {
+            var name = $("#name").val();// URLSearchParams.get()
+            // var name = document.getElementById("name");
+            var email = $("#email").val();
+            var password = $("#password").val();
+            var passwordConfirm = $("#passwordConfirm").val();
+
+            let param = {
+                "name": name,
+                "email": email,
+                "password": password
+            };
+
+            if (name === '') {
+                // name.style.border = "thin solid red";
+            } else if (email === '') {
+
+            } else if (password === '') {
+
+            } else if (passwordConfirm === '') {
+
+            } else {
+
+                // 2. ajax 함수 이용해서 api 호출, success 응답 호출 해보기
+                $.support.cors = true;
+                $.ajax({
+                    type: 'post',           // 타입 (get, post, put 등등)
+                    url: `http://localhost:3000/api/users`,           // 요청할 서버url
+                    async: true,            // 비동기화 여부 (default : true)
+                    dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
+                    data: JSON.stringify(param),
+                    contentType: "application/json",
+                    success: async function (data) { // 결과 성공 콜백함수
+                        console.log("호출됨");
+                        goLoginForm();
+                    }
+                });
+            }
+
+        }
+    </script>
+    <!-- <script src="./js/resign-user.js"></script> -->
+    <script src="./js/script.js"></script>
 </body>
-<script src="./js/resign-user.js"></script>
+
 </html>
