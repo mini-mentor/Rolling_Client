@@ -119,7 +119,7 @@
 
             memo.innerText = shortenWords(content);
             memo.style.fontFamily = font;
-            fromSender.innerText = `From. ${writer}`;
+            fromSender.innerText = shortenWords(`From. ${writer}`,13);
             memo.className = 'memo';
             fromSender.className = 'from_sender';
 
