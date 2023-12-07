@@ -21,7 +21,7 @@
             <div class="sender_box">
                 <div class="sender_tit">From.</div>
                 <input type="text" id="sender_input">
-                <i class="bi bi-trash3"></i>
+                <!-- <i class="bi bi-trash3"></i> -->
             </div>
             <div class="paper_box">
                 <textarea name="" id="text" maxlength="500" placeholder="500자 이내 작성"></textarea>
@@ -56,12 +56,22 @@
             console.log("성공함");
             console.log(result);
 
+            // TODO: 편지 수정 시 폰트 적용
+            // var font = result.result.font;
+            // $('#text').css("font-family", $(font).val());
+
+            // writer 가져오기
+            var writer = result.result.writer;
+            $('#sender_input').val(writer);
+            $("#sender_input").attr("readonly",true);        // readonly 처리
+
             // paper 내용 가져오기
             var content = result.result.content;
             var textarea_str = $("#text").val();
             textarea_str = textarea_str + content;
             // console.log(textarea_str);
             $("#text").html(textarea_str);
+            $("#text").attr("readonly",true);        // readonly 처리
         }
     });
 </script>
