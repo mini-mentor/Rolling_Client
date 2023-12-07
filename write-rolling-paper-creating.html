@@ -69,7 +69,7 @@
             "font": font
         };
 
-        if ( !Boolean(isEdit) && eancontent !== '') {
+        if ( !Boolean(isEdit) && content !== '') {
 
             // 2. ajax 함수 이용해서 api 호출, success 응답 호출 해보기
             $.support.cors = true;
@@ -86,6 +86,7 @@
             });
         } else if ( Boolean(isEdit) ){
             editPaper();
+            location.href = `./write-rolling-paper.html?paper_id=${paper_id}`;  
         } else {
             console.log("오류");
         }

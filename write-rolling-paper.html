@@ -84,19 +84,24 @@
             window.location.href = `../write-rolling-paper-creating.html?paper_id=${paper_id}`;
         }
 
-        function deletePaper() {
-            $.support.cors = true;
-            $.ajax({
-                type: 'delete',           // 타입 (get, post, put 등등)
-                url: `http://localhost:3000/api/rollingpapers/${id}`,           // 요청할 서버url
-                async: true,            // 비동기화 여부 (default : true)
-                dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
-                data: {},
-                contentType: "application/json",
-                success: function (result) { // 결과 성공 콜백함수
-                    console.log(result);
-                }
-            });
+        async function deletePaper() {
+            // const url = new URL(window.location.href);
+            paper_id = url.searchParams.get('paper_id');
+
+            if (confirm("정말 이 롤링페이퍼를 삭제하시겠습니까?")) {
+                $.ajax({
+                    type: 'delete',
+                    url: `http://localhost:3000/api/rollingpapers/${paper_id}`,
+                    dataType: 'json',
+                    success: function (result) {
+                        location.href = `./main.html`;
+                    },
+                    error: function (error) {
+                        console.error(error);
+                        alert('페이퍼 삭제에 실패했습니다.');
+                    }
+                });
+            }
         }
 
     </script>
