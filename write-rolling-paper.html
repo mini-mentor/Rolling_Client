@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./css/write-rolling-paper.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
     <div id="wrap">
         <header>
@@ -28,7 +29,7 @@
             <div class="bottom_box">
                 <div class="btn delete"><i class="bi bi-trash3-fill"></i></div>
                 <div class="btn edit"><iconify-icon icon="mdi:pencil-add" width="30" height="28"
-                        onclick=" showListMemo()"></iconify-icon></div>
+                        onclick="createPaper()"></iconify-icon></div>
                 <div class="btn emoji"><iconify-icon icon="mdi:emoji" width="30" height="29"></iconify-icon></div>
             </div>
 
@@ -38,7 +39,6 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
-        let receiver = "";
 
         const url = new URL(window.location.href);
         console.log(url);
@@ -47,20 +47,26 @@
         const urlParams = url.searchParams;
 
         // URLSearchParams.get()
-        let id = urlParams.get('paper_id');
+        let paper_id = urlParams.get('paper_id');
+        let id;
+        let content;
+        let writer;
+        let font;
+        let receiver = "";
 
         // 2. ajax 함수 이용해서 api 호출, success 응답 호출 해보기
         $.support.cors = true;
         $.ajax({
             type: 'get',           // 타입 (get, post, put 등등)
-            url: `http://localhost:3000/api/rollingpapers/${id}`,           // 요청할 서버url
+            url: `http://localhost:3000/api/rollingpapers/${paper_id}`,           // 요청할 서버url
             async: true,            // 비동기화 여부 (default : true)
             dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
             data: {},
             contentType: "application/json",
             success: function (result) { // 결과 성공 콜백함수
                 console.log(result);
-                setRollingPaperHtml(result.result.receiver);// 받는 사람 띄우기
+                receiver = result.result.receiver;
+                setRollingPaperHtml(receiver);// 받는 사람 띄우기
             }
         });
 
@@ -74,13 +80,12 @@
         }
 
         function createPaper() {
-            console.log(id);
-            window.location.href = `../write-rolling-paper-creating.html?paper_id=${id}`;
+            console.log(paper_id);
+            window.location.href = `../write-rolling-paper-creating.html?paper_id=${paper_id}`;
         }
 
     </script>
     <script>
-
         // 2. ajax 함수 이용해서 api 호출, success 응답 호출 해보기
         $.support.cors = true;
         $.ajax({
@@ -92,9 +97,17 @@
             contentType: "application/json",
             success: function (result) { // 결과 성공 콜백함수
                 result.result.forEach((result) => {
-                    if (result.paper_id === Number(id)) {
+                    if (result.paper_id === Number(paper_id)) {
                         console.log(result);
-                        showListPapers(result.paper_id, result.id, result.content, result.writer, result.font);// 받는 사람 띄우기
+                        id = result.id;
+                        content = result.content;
+                        writer = result.writer;
+                        font = result.font;
+                        console.log(id + " " + content + " " + writer + " " + font);
+                        showListPapers(paper_id, id, content, writer, font);// 받는 사람 띄우기
+                        $(".memo").click(function () {
+                            window.location.href = `../write-rolling-paper-viewing.html?paper_id=${paper_id}&id=${id}`;
+                        });
                     }
                 });
             }
@@ -106,15 +119,10 @@
 
             memo.innerText = shortenWords(content);
             memo.style.fontFamily = font;
-            fromSender.innerText = `From. ${writer}`;
+            fromSender.innerText = shortenWords(`From. ${writer}`,13);
             memo.className = 'memo';
             fromSender.className = 'from_sender';
 
-            $(".memo").click(function () {
-                window.location.href = `../write-rolling-paper-viewing.html?paper_id=${paper_id}&id=${id}`;
-            })
-
-            console.log(memo);
             paper.appendChild(memo);
             memo.appendChild(fromSender);
         }
