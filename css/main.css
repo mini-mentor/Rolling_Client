@@ -1,11 +1,6 @@
 main {
     margin: 7.5vw;
 }
-
-.title {
-    font-size: var(--big-font-size);
-}
-
 main {
     position: relative;
     top: 40px;
