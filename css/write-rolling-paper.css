@@ -95,9 +95,8 @@ main{
     justify-content: center;
     gap: 10px;
     width:100%;
-    height: 80%;
-    /*TODO: 안에서 스크롤 할 수 있게 만들기 */ 
-    overflow: scroll;
+    max-height: 70vh;
+    overflow-y: scroll;
 }
 .memo{
     background-color: #FED9A0;
@@ -124,6 +123,7 @@ main{
     justify-content: end;
     margin-bottom: 10px;
     padding-right: 10px;
+    font-size: var(--normal-font-size);
 }
 .bottom_box{
     position: absolute;
@@ -156,15 +156,7 @@ main{
     font-size: 24px;
     font-weight: 600;
 }
-.delete_btn{
-    position: relative;
-    top:calc(40px + 10px);
-    box-sizing: border-box;
-    width: calc(100% - 30px);
-    height: 30px;
-    border-radius: 20px;
-    background-color: #FCC572;
-    border: none;
-    margin-bottom: 10px;
-
+.bi{    
+    font-size: 25px;
 }
+
