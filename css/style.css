@@ -47,6 +47,11 @@ header .title {
     left: 6vw;
 }
 
+.title {
+    font-size: var(--big-font-size);
+}
+
+
 header .hamberger_menu {
     position: absolute;
     width: 30px;
