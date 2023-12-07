@@ -40,7 +40,7 @@
 
     var paper_id = urlParams.get('paper_id');
     var id = urlParams.get('id');
-    console.log(paper_id+" "+id);
+    console.log(paper_id + " " + id);
 
     $.support.cors = true;
     $.ajax({
@@ -53,6 +53,13 @@
         success: function (result) { // 결과 성공 콜백함수
             console.log("성공함");
             console.log(result);
+
+            // paper 내용 가져오기
+            var content = result.result.content;
+            var textarea_str = $("#text").val();
+            textarea_str = textarea_str + content;
+            // console.log(textarea_str);
+            $("#text").html(textarea_str);
         }
     });
 </script>
