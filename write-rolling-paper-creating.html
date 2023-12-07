@@ -38,17 +38,29 @@
 </body>
 <script src="/js/write-rolling-paper-creating.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script>
     // 현재 롤링페이퍼 아이디 보기
     const url = new URL(window.location.href);
     const urlParams = url.searchParams;// URLSearchParams 객체
 
+    let paper_id;
+    let id;
+    let content;
+    let writer;
+    let font;
+
+    // 현재 수정상태인가
+    let isEdit = urlParams.get('edit');
+    if (Boolean(isEdit)) {
+        getPaperInfo();
+    }
+
     async function savePaper() {
-        var paper_id = urlParams.get('paper_id');// URLSearchParams.get()
-        var content = $("#text").val();
-        var writer = $("#sender_input").val();
-        var font = findFont();
+        paper_id = urlParams.get('paper_id');// URLSearchParams.get()
+        content = $("#text").val();
+        writer = $("#sender_input").val();
+        font = findFont();
 
         let param = {
             "paper_id": paper_id,
@@ -57,7 +69,7 @@
             "font": font
         };
 
-        if ( content !== '' ) {
+        if ( !Boolean(isEdit) && eancontent !== '') {
 
             // 2. ajax 함수 이용해서 api 호출, success 응답 호출 해보기
             $.support.cors = true;
@@ -72,9 +84,80 @@
                     location.href = `./write-rolling-paper.html?paper_id=${paper_id}`;
                 }
             });
+        } else if ( Boolean(isEdit) ){
+            editPaper();
         } else {
             console.log("오류");
         }
+    }
+
+    // 기존 값 가져오기
+    async function getPaperInfo() {
+        paper_id = urlParams.get('paper_id');
+        id = urlParams.get('id');
+        console.log(paper_id + " " + id);
+
+        $.support.cors = true;
+        $.ajax({
+            type: 'get',           // 타입 (get, post, put 등등)
+            url: `http://localhost:3000/api/papers/${paper_id}/${id}`,           // 요청할 서버url
+            async: true,            // 비동기화 여부 (default : true)
+            dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
+            data: {},
+            contentType: "application/json",
+            success: function (result) { // 결과 성공 콜백함수
+                console.log("성공함");
+                console.log(result);
+
+                // TODO: 편지 수정 시 폰트 적용
+                //var font = result.result.font;
+                //$('.sender_box').css("font-family", $(font).val());
+
+                // writer 가져오기
+                var writer = result.result.writer;
+                $('#sender_input').val(writer);
+                // console.log(writer);
+
+                // paper 내용 가져오기
+                var content = result.result.content;
+                var textarea_str = $("#text").val();
+                textarea_str = textarea_str + content;
+                // console.log(textarea_str);
+                $("#text").html(textarea_str);
+                // console.log(content);
+            }
+        });
+    }
+
+    async function editPaper() {
+        paper_id = urlParams.get('paper_id');
+        id = urlParams.get('id');
+        let param = {
+            "content": content,
+            "writer": writer,
+            "font": font
+        };
+
+        $.support.cors = true;
+        $.ajax({
+            type: 'patch',           // 타입 (get, post, put 등등)
+            url: `http://localhost:3000/api/papers/${id}`,           // 요청할 서버url
+            async: true,            // 비동기화 여부 (default : true)
+            dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
+            data: JSON.stringify(param),
+            contentType: "application/json",
+            success: function (result) { // 결과 성공 콜백함수
+                console.log("성공함");
+                console.log(result);
+
+                // TODO: 편지 수정 시 폰트 적용
+                //var font = result.result.font;
+                //$('.sender_box').css("font-family", $(font).val());
+
+                
+            }
+        });
+
     }
 </script>
 <script src="./js/script.js"></script>

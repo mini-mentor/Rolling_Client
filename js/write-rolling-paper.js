@@ -1,8 +1,8 @@
 let contentBox = document.getElementsByClassName('middle_box')[0];
 let createBtn = document.getElementsByClassName('edit_btn')[0];
-// let paper = document.getElementsByClassName('middle_box')[0];
+let paper = document.getElementsByClassName('middle_box')[0];
 
-const shortenWords = (str, length = 30) => {
+const shortenWords = (str, length = 25) => {
     let result = '';
     if(str.length > length){
         result = str.substr(0, length-2)+'...';

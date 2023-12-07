@@ -27,9 +27,9 @@
             </div>
             <div class="middle_box"></div>
             <div class="bottom_box">
-                <div class="btn delete"><i class="bi bi-trash3-fill"></i></div>
-                <div class="btn edit"><iconify-icon icon="mdi:pencil-add" width="30" height="28"
-                        onclick="showListMemo()"></iconify-icon></div>
+                <div class="btn delete" onclick="deletePaper()"><i class="bi bi-trash3-fill"></i></div>
+                <div class="btn edit" onclick="createPaper()"><iconify-icon icon="mdi:pencil-add" width="30"
+                        height="28"></iconify-icon></div>
                 <div class="btn emoji"><iconify-icon icon="mdi:emoji" width="30" height="29"></iconify-icon></div>
             </div>
 
@@ -84,6 +84,21 @@
             window.location.href = `../write-rolling-paper-creating.html?paper_id=${paper_id}`;
         }
 
+        function deletePaper() {
+            $.support.cors = true;
+            $.ajax({
+                type: 'delete',           // 타입 (get, post, put 등등)
+                url: `http://localhost:3000/api/rollingpapers/${id}`,           // 요청할 서버url
+                async: true,            // 비동기화 여부 (default : true)
+                dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
+                data: {},
+                contentType: "application/json",
+                success: function (result) { // 결과 성공 콜백함수
+                    console.log(result);
+                }
+            });
+        }
+
     </script>
     <script>
         // 2. ajax 함수 이용해서 api 호출, success 응답 호출 해보기
@@ -119,7 +134,7 @@
 
             memo.innerText = shortenWords(content);
             memo.style.fontFamily = font;
-            fromSender.innerText = shortenWords(`From. ${writer}`,13);
+            fromSender.innerText = shortenWords(`From. ${writer}`, 13);
             memo.className = 'memo';
             fromSender.className = 'from_sender';
 
