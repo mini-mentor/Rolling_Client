@@ -28,7 +28,7 @@
                 <textarea name="" id="text" maxlength="500" placeholder="500자 이내 작성"></textarea>
             </div>
             <div class="btn_box">
-                <button class="send_btn" onclick="location.href='../write-rolling-paper-creating.html';">수정하기</button>
+                <button class="send_btn" onclick="goToEdit()">수정하기</button>
                 <button class="send_btn" onclick="confirm('삭제하시겠습니까?')">삭제하기</button>
             </div>
         </main>
@@ -58,8 +58,8 @@
             console.log(result);
 
             // TODO: 편지 수정 시 폰트 적용
-            // var font = result.result.font;
-            // $('#text').css("font-family", $(font).val());
+            var font = result.result.font;
+            $('.sender_box').css("font-family", $(font).val());
 
             // writer 가져오기
             var writer = result.result.writer;
@@ -75,6 +75,11 @@
             $("#text").attr("readonly",true);        // readonly 처리
         }
     });
+
+    function goToEdit() {
+        var isEdit = true;
+        location.href=`../write-rolling-paper-creating.html?paper_id=${paper_id}&id=${id}&edit=${isEdit}`;
+    }
 </script>
 <script src="./js/script.js"></script>
 </html>
