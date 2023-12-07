@@ -5,30 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rolling</title>
-    <!-- <link rel="stylesheet" href="/css/WriteRolling.css"> -->
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./css/write-rolling-paper.css">
-
+    <link rel="stylesheet" href="./css/style.css">
 </head>
-
 <body>
     <div id="wrap">
         <header>
             <span class="rolling_title" onclick="goHome()">Rolling</span>
-            <div class="hamberger_menu"><iconify-icon icon="material-symbols:menu" width="25"
-                    height="24"></iconify-icon></div>
+            <!-- <div class="hamberger_menu"><iconify-icon icon="material-symbols:menu" width="25"
+                    height="24"></iconify-icon></div> -->
         </header>
         <main>
             <div class="top_box">
-                <div class="rec_box"></div>
+                <div class="rec_box">
+                    <div class="rec_tit">To.</div>
+                    <input type="text" id="recipient_input">
+                </div>
                 <button id="sharebtn"><iconify-icon icon="ph:share-fat-fill" width="25"
                         height="23"></iconify-icon></button>
             </div>
             <div class="middle_box"></div>
             <div class="bottom_box">
-                <div class="edit_btn"><iconify-icon icon="mdi:pencil-add" width="30" height="28"
-                        onclick="createPaper()"></iconify-icon></div>
-                <div class="emoji_btn"><iconify-icon icon="mdi:emoji" width="30" height="29"></iconify-icon></div>
+                <div class="btn delete"><i class="bi bi-trash3-fill"></i></div>
+                <div class="btn edit"><iconify-icon icon="mdi:pencil-add" width="30" height="28"
+                        onclick=" showListMemo()"></iconify-icon></div>
+                <div class="btn emoji"><iconify-icon icon="mdi:emoji" width="30" height="29"></iconify-icon></div>
             </div>
 
         </main>
@@ -112,6 +115,7 @@
             paper.appendChild(memo);
             memo.appendChild(fromSender);
         }
+      
     </script>
     <script src="./js/script.js"></script>
     <script src="./js/write-rolling-paper.js"></script>
