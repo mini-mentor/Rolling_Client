@@ -20,8 +20,6 @@
         <main>
             <div class="top_box">
                 <div class="rec_box">
-                    <div class="rec_tit">To.</div>
-                    <input type="text" id="recipient_input">
                 </div>
                 <button id="sharebtn"><iconify-icon icon="ph:share-fat-fill" width="25"
                         height="23"></iconify-icon></button>
@@ -82,6 +80,7 @@
 
     </script>
     <script>
+
         // 2. ajax 함수 이용해서 api 호출, success 응답 호출 해보기
         $.support.cors = true;
         $.ajax({
@@ -93,29 +92,37 @@
             contentType: "application/json",
             success: function (result) { // 결과 성공 콜백함수
                 result.result.forEach((result) => {
-                    if ( result.paper_id === Number(id) ) {
+                    if (result.paper_id === Number(id)) {
                         console.log(result);
-                        showListPapers(result.content, result.writer, result.font);// 받는 사람 띄우기
+                        showListPapers(result.paper_id, result.id, result.content, result.writer, result.font);// 받는 사람 띄우기
                     }
                 });
             }
         });
 
-        function showListPapers(content, writer, font) {
+        function showListPapers(paper_id, id, content, writer, font) {
             var memo = document.createElement('div');
             var fromSender = document.createElement('div');
 
-            memo.innerText = content;
+            memo.innerText = shortenWords(content);
             memo.style.fontFamily = font;
             fromSender.innerText = `From. ${writer}`;
             memo.className = 'memo';
             fromSender.className = 'from_sender';
 
+            $(".memo").click(function () {
+                window.location.href = `../write-rolling-paper-viewing.html?paper_id=${paper_id}&id=${id}`;
+            })
+
             console.log(memo);
             paper.appendChild(memo);
             memo.appendChild(fromSender);
         }
-      
+
+        function showPaper(paper_id, id) {
+            console.log("creating입니다");
+            location.href = `./write-rolling-paper-viewing.html?paper_id=${paper_id}&id=${id}`;
+        }
     </script>
     <script src="./js/script.js"></script>
     <script src="./js/write-rolling-paper.js"></script>

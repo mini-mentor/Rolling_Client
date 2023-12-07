@@ -54,18 +54,18 @@
                     result.result.forEach((result) => {
                         var lastDate = parseInt(result.created_at.substr(9, 1)) + 1;// +1을 하지 않으면 12일이 11일이 됨
                         console.log(result);
-                        setPaperHtml(result.id, result.title, result.sender, result.created_at.substr(0, 9) + lastDate.toString());
+                        setRollingPaperHtml(result.id, result.title, result.sender, result.created_at.substr(0, 9) + lastDate.toString());
                     });
                 }
             });
         }
 
-        function setPaperHtml(id, title, sender, date) {
-            $(".pages").append(getPaperHtml(id, title, sender, date));// html - 덮어씌우기, append - 추가하기
+        function setRollingPaperHtml(id, title, sender, date) {
+            $(".pages").append(getRollingPaperHtml(id, title, sender, date));// html - 덮어씌우기, append - 추가하기
         }
 
-        function getPaperHtml(id, title, sender, date) {
-            return `<div class="paper" id="paper" onclick="showPaper(${id})">
+        function getRollingPaperHtml(id, title, sender, date) {
+            return `<div class="paper" id="paper" onclick="showRollingPaper(${id})">
                         <div class="title">${title}</div>
                         <div class="detail">
                             <div class="from">From. ${sender}</div>
@@ -74,7 +74,7 @@
                     </div>`;
         }
 
-        function showPaper(id) {
+        function showRollingPaper(id) {
             console.log("creating입니다");
             location.href = `./write-rolling-paper.html?paper_id=${id}`;
         }
@@ -134,7 +134,7 @@
                         if (result.id === id) {
                             var lastDate = parseInt(result.created_at.substr(9, 1)) + 1;// +1을 하지 않으면 12일이 11일이 됨
                             console.log(result);
-                            setPaperHtml(result.id, result.title, result.sender, result.created_at.substr(0, 9) + lastDate.toString());
+                            setRollingPaperHtml(result.id, result.title, result.sender, result.created_at.substr(0, 9) + lastDate.toString());
                         }
                     });
                 }
