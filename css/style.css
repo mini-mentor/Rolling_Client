@@ -51,6 +51,9 @@ header .title {
     font-size: var(--big-font-size);
 }
 
+.bi{
+    font-size: 20px;
+}
 
 header .hamberger_menu {
     position: absolute;
