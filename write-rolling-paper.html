@@ -27,10 +27,11 @@
             </div>
             <div class="middle_box"></div>
             <div class="bottom_box">
-                <div class="btn delete" onclick="deletePaper()"><i class="bi bi-trash3-fill"></i></div>
                 <div class="btn edit" onclick="createPaper()"><iconify-icon icon="mdi:pencil-add" width="30"
                         height="28"></iconify-icon></div>
-                <div class="btn emoji" onclick="addEmoji()"><iconify-icon icon="mdi:emoji" width="30" height="29"></iconify-icon></div>
+                <div class="btn emoji" onclick="addEmoji()"><iconify-icon icon="mdi:emoji" width="30"
+                        height="29"></iconify-icon></div>
+                <div class="btn delete" onclick="deletePaper()"><i class="bi bi-trash3-fill"></i></div>
             </div>
 
         </main>
@@ -153,7 +154,7 @@
         }
 
         function addEmoji() {
-            location.href=`./add-rolling-emoji.html?paper_id=${paper_id}`;
+            location.href = `./add-rolling-emoji.html?paper_id=${paper_id}`;
         }
     </script>
     <script src="./js/script.js"></script>
