@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,100 +8,136 @@
     <link rel="shortcut icon" type="image/x-icon" href="../img/logo.svg">
     <link rel="stylesheet" href="./css/add-rolling-emoji.css">
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+
 <body>
     <div id="wrap">
         <header>
-            <i class="bi bi-chevron-left" onclick="window.location.href='./write-rolling-paper.html';"></i>
+            <i class="bi bi-chevron-left" onclick="backBtn()"></i>
             <div class="title" onclick="goHome()">Rolling</div>
         </header>
         <main>
             <div id="title">삽입할 이모지를 선택하세요!</div>
             <div class="emoji-container">
                 <div class="con">
-                    <input type="radio" name="emoji" id="" checked>
-                    <label for="emoji"> 
-                    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Blue%20Heart.png" alt="Blue Heart" width="25" height="25" />
+                    <input type="radio" name="emoji" id="blue_heart" checked>
+                    <label for="emoji">
+                        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Blue%20Heart.png"
+                            alt="Blue Heart" width="25" height="25" />
                     </label>
                 </div>
                 <div class="con">
-                    <input type="radio" name="emoji" id="">
-                    <label for="emoji"> 
-                    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Growing%20Heart.png" alt="Growing Heart" width="25" height="25" />
-                 </label>
-                </div>
-                <div class="con">
-                    <input type="radio" name="emoji" id="">
-                    <label for="emoji"> 
-                    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Revolving%20Hearts.png" alt="Revolving Hearts" width="25" height="25" />
+                    <input type="radio" name="emoji" id="pink_heart">
+                    <label for="emoji">
+                        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Growing%20Heart.png"
+                            alt="Growing Heart" width="25" height="25" />
                     </label>
                 </div>
                 <div class="con">
-                    <input type="radio" name="emoji" id="">
-                    <label for="emoji"> 
-                    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Thought%20Balloon.png" alt="Thought Balloon" width="25" height="25" />
+                    <input type="radio" name="emoji" id="round_heart">
+                    <label for="emoji">
+                        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Revolving%20Hearts.png"
+                            alt="Revolving Hearts" width="25" height="25" />
                     </label>
                 </div>
                 <div class="con">
-                    <input type="radio" name="emoji" id="">
-                    <label for="emoji"> 
-                        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Sweat%20Droplets.png" alt="Sweat Droplets" width="25" height="25" />
+                    <input type="radio" name="emoji" id="thinking">
+                    <label for="emoji">
+                        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Thought%20Balloon.png"
+                            alt="Thought Balloon" width="25" height="25" />
                     </label>
                 </div>
                 <div class="con">
-                    <input type="radio" name="emoji" id="">
-                    <label for="emoji"> 
-                    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Dizzy.png" alt="Dizzy" width="25" height="25" />
+                    <input type="radio" name="emoji" id="water">
+                    <label for="emoji">
+                        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Sweat%20Droplets.png"
+                            alt="Sweat Droplets" width="25" height="25" />
                     </label>
                 </div>
                 <div class="con">
-                    <input type="radio" name="emoji" id="">
-                    <label for="emoji"> 
-                    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Ghost.png" alt="Ghost" width="25" height="25" />
+                    <input type="radio" name="emoji" id="star">
+                    <label for="emoji">
+                        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Dizzy.png"
+                            alt="Dizzy" width="25" height="25" />
                     </label>
                 </div>
                 <div class="con">
-                    <input type="radio" name="emoji" id="">
-                    <label for="emoji"> 
-                    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Alien.png" alt="Alien" width="25" height="25" />
+                    <input type="radio" name="emoji" id="goast">
+                    <label for="emoji">
+                        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Ghost.png"
+                            alt="Ghost" width="25" height="25" />
                     </label>
                 </div>
                 <div class="con">
-                    <input type="radio" name="emoji" id="">
-                    <label for="emoji"> 
-                    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Alien%20Monster.png" alt="Alien Monster" width="25" height="25" />
+                    <input type="radio" name="emoji" id="alien">
+                    <label for="emoji">
+                        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Alien.png"
+                            alt="Alien" width="25" height="25" />
                     </label>
                 </div>
                 <div class="con">
-                    <input type="radio" name="emoji" id="">
-                    <label for="emoji"> 
-                    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Beaming%20Face%20with%20Smiling%20Eyes.png" alt="Beaming Face with Smiling Eyes" width="25" height="25" />
+                    <input type="radio" name="emoji" id="robot">
+                    <label for="emoji">
+                        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Alien%20Monster.png"
+                            alt="Alien Monster" width="25" height="25" />
                     </label>
                 </div>
                 <div class="con">
-                    <input type="radio" name="emoji" id="">
-                    <label for="emoji"> 
-                    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Face%20Without%20Mouth.png" alt="Face Without Mouth" width="25" height="25" />
+                    <input type="radio" name="emoji" id="smile">
+                    <label for="emoji">
+                        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Beaming%20Face%20with%20Smiling%20Eyes.png"
+                            alt="Beaming Face with Smiling Eyes" width="25" height="25" />
                     </label>
                 </div>
                 <div class="con">
-                    <input type="radio" name="" id="">
-                    <label for="emoji"> 
-                    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Face%20in%20Clouds.png" alt="Face in Clouds" width="25" height="25" />
+                    <input type="radio" name="emoji" id="surprise">
+                    <label for="emoji">
+                        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Face%20Without%20Mouth.png"
+                            alt="Face Without Mouth" width="25" height="25" />
                     </label>
                 </div>
                 <div class="con">
-                    <input type="radio" name="emoji" id="">
-                    <label for="emoji"> 
-                    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Face%20Blowing%20a%20Kiss.png" alt="Face Blowing a Kiss" width="25" height="25" />
+                    <input type="radio" name="" id="cloud">
+                    <label for="emoji">
+                        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Face%20in%20Clouds.png"
+                            alt="Face in Clouds" width="25" height="25" />
+                    </label>
+                </div>
+                <div class="con">
+                    <input type="radio" name="emoji" id="wink">
+                    <label for="emoji">
+                        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Face%20Blowing%20a%20Kiss.png"
+                            alt="Face Blowing a Kiss" width="25" height="25" />
                     </label>
                 </div>
             </div>
-          
+
         </main>
-        <div id="btn_box"> <button>롤링페이퍼에 넣기</button> </div>
-       
+        <div id="btn_box" onclick="setEmoji()"> <button>롤링페이퍼에 넣기</button> </div>
+
     </div>
-</body> 
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="./js/add-rolling-emoji.js"></script>
+<script>
+    const url = new URL(window.location.href);
+    const urlParams = url.searchParams;
+    let paper_id = urlParams.get('paper_id');
+
+    function setEmoji() {
+        var radios = document.getElementsByName('emoji');
+        for (var radio of radios) {
+            if (radio.checked) {
+                console.log(radio.value);
+            }
+        }
+    }
+
+    function backBtn() {
+
+        window.location.href = `./write-rolling-paper.html?paper_id=${paper_id}`;
+    }
+</script>
+
 </html>

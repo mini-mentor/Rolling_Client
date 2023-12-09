@@ -15,7 +15,7 @@
 <body>
     <div id="wrap">
         <header>
-            <i class="bi bi-chevron-left" onclick="window.location.href='./write-rolling-paper.html';"></i>
+            <i class="bi bi-chevron-left" onclick="backBtn()"></i>
             <div class="title" onclick="goHome()">Rolling</div>
         </header>
         <main>
@@ -87,8 +87,6 @@
         id = url.searchParams.get('id');
 
         if (confirm("정말 이 편지를 삭제하시겠습니까?")) {
-
-
             $.ajax({
                 type: 'delete',
                 url: `http://localhost:3000/api/papers/${paper_id}/${id}`,
@@ -102,6 +100,11 @@
                 }
             });
         }
+    }
+
+    function backBtn() {
+        paper_id = urlParams.get('paper_id');
+        window.location.href = `./write-rolling-paper.html?paper_id=${paper_id}`;
     }
 </script>
 <script src="./js/script.js"></script>

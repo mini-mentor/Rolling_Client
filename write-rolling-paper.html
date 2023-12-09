@@ -30,7 +30,7 @@
                 <div class="btn delete" onclick="deletePaper()"><i class="bi bi-trash3-fill"></i></div>
                 <div class="btn edit" onclick="createPaper()"><iconify-icon icon="mdi:pencil-add" width="30"
                         height="28"></iconify-icon></div>
-                <div class="btn emoji"><iconify-icon icon="mdi:emoji" width="30" height="29"></iconify-icon></div>
+                <div class="btn emoji" onclick="addEmoji()"><iconify-icon icon="mdi:emoji" width="30" height="29"></iconify-icon></div>
             </div>
 
         </main>
@@ -150,6 +150,10 @@
         function showPaper(paper_id, id) {
             console.log("creating입니다");
             location.href = `./write-rolling-paper-viewing.html?paper_id=${paper_id}&id=${id}`;
+        }
+
+        function addEmoji() {
+            location.href=`./add-rolling-emoji.html?paper_id=${paper_id}`;
         }
     </script>
     <script src="./js/script.js"></script>
