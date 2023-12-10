@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rolling</title>
     <link rel="shortcut icon" type="image/x-icon" href="../img/logo.svg">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./css/resign-user.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
@@ -20,19 +20,19 @@
         <div class="main_title">회원가입</div>
         <div class="con">
             <span>유저이름</span>
-            <input type="text" id="name">
+            <input type="text" id="name" placeholder="이름은 4~12글자, 영어 또는 한글만 가능합니다">
         </div>
         <div class="con">
             <span>이메일</span>
-            <input type="text" id="email">
+            <input type="text" id="email" placeholder="이메일을 입력하세요">
         </div>
         <div class="con">
             <span>비밀번호</span>
-            <input type="password" id="password">
+            <input type="password" id="password" placeholder="8글자 이상, 영문, 숫자, 특수 문자를 포함해야 합니다">
         </div>
         <div class="con">
             <span>비밀번호 확인</span>
-            <input type="password" id="passwordConfirm">
+            <input type="password" id="passwordConfirm" placeholder="동일한 비밀번호를 입력하세요">
         </div>
         <button id="joinBtn" onclick="join()">가입하기</button>
     </main>
@@ -47,23 +47,40 @@
             var password = $("#password").val();
             var passwordConfirm = $("#passwordConfirm").val();
 
+            let result = true;
+
             let param = {
                 "name": name,
                 "email": email,
                 "password": password
             };
 
-            if (name === '') {
+            // 1. id는 4~12글자, 영어 또는 숫자만 가능하다
+            // 2. pw는 8글자 이상, 영문, 숫자, 특수문자를 포함해야 한다
+            // 3. 비밀번호와 비밀번호 확인은 일치해야 한다
+            var patt1 = /^[A-Za-z0-9][A-Za-z0-9]*$/;// 이름
+            var patt2 = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;// 비밀번호
+            if (name === ''
+                || ((name.length < 4 || name.length > 12)
+                    || !patt1.test(name))) {
                 // name.style.border = "thin solid red";
-            } else if (email === '') {
-
-            } else if (password === '') {
-
-            } else if (passwordConfirm === '') {
-
-            } else {
-
-                // 2. ajax 함수 이용해서 api 호출, success 응답 호출 해보기
+                alert("이름을 다시 입력하세요");
+                $("#name").val("");
+                result = false;
+            }
+            if (email === '') {
+                $("#email").val("");
+                result = false;
+            }
+            if (password === ''
+            || passwordConfirm === ''
+            || !patt2.test(password)
+            || password !== passwordConfirm) {
+                $("#password").val("");
+                $("#passwordConfirm").val("");
+                result = false;
+            }
+            if ( result ) {
                 $.support.cors = true;
                 $.ajax({
                     type: 'post',           // 타입 (get, post, put 등등)
@@ -78,7 +95,6 @@
                     }
                 });
             }
-
         }
     </script>
     <!-- <script src="./js/resign-user.js"></script> -->
